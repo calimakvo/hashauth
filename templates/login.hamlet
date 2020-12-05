@@ -1,0 +1,26 @@
+<body .ha-body-pad>
+
+    ^{headerWidget}
+
+    <div .container .py-5>
+
+        <div .row>
+            <div .col-md-12>
+                <div .row>
+                    <div .col-md-6 .mx-auto>
+                        <div .card .rounded-0>
+                            <div .card-header>ログインフォーム
+                            <div .card-body>
+                                $forall (status, m) <- msg
+                                    $if status == "success"
+                                        <div .alert .alert-success role="alert">
+                                            #{m}
+                                    $else
+                                        <div .alert .alert-danger role="alert">
+                                            #{m}
+                                <form .form role="form" action=@{loginRoute} autocomplete="off" #formLogin novalidate="" method="post">
+                                    ^{widget}
+
+                                    <button type="submit" .btn .btn-success .btn-lg .float-right #btnLogin>ログイン
+
+    ^{footerWidget}

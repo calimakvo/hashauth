@@ -1,0 +1,14 @@
+-- By default this file is used by `persistFileWith` in Model.hs (which is imported by Foundation.hs)
+-- Syntax for this file here: https://github.com/yesodweb/persistent/blob/master/docs/Persistent-entity-syntax.md
+
+AdminUsr
+    adminId Int sqltype=bigint default=nextval('admin_usr_admin_id_seq')
+    loginId Text sqltype=varchar(256)
+    password Text Maybe sqltype=varchar(512)
+    validFlag Bool sqltype=boolean
+    createTime UTCTime sqltype=timestamptz
+    updateTime UTCTime sqltype=timestamptz default=now()
+    version Int sqltype=integer
+    UniAdminUsrLoginId loginId
+    Primary adminId
+    deriving Typeable Show

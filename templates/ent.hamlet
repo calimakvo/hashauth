@@ -1,0 +1,26 @@
+<body .ha-body-pad>
+
+    ^{headerWidget}
+
+    <div .container .py-5>
+
+        <div .row>
+            <div .col-md-12>
+                $forall (status, m) <- msg
+                    $if status == "success"
+                        <div .alert .alert-success role="alert">
+                            #{m}
+                    $else
+                        <div .alert .alert-danger role="alert">
+                            #{m}
+
+                $maybe (auid, au) <- muser
+                    <p>AdminUsrId:
+                        <span .ml-5>#{show(auid)}
+                    <p>AdminUsr:
+                        <span .ml-5>#{show(au)}
+                <div>
+                    <a href=@{AuthR LogoutR} .btn .btn-success>
+                        ログアウト
+
+    ^{footerWidget}
